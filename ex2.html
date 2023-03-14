@@ -13,9 +13,13 @@
             font-size: 25px;
             color:white;
         }
+        body{
+            display:flex;
+            justify-content: center;
+            align-items:center;
+        }
         .container{
-            width:20%;
-            margin-left:40%;
+            width:305px;
             background-color:#212121;
             margin-top:50px;
             padding:5px;
@@ -128,8 +132,18 @@
         }
         function set_Am()
         {
-            document.getElementById("input").value=-document.getElementById("input").value;
-            document.getElementById("input").innerText=-document.getElementById("input").innerText;
+            if(Functions!=="")
+            {
+                if(document.getElementById("input").value!=""){
+                    document.getElementById("input").value=-document.getElementById("input").value;
+                    document.getElementById("input").innerText=-document.getElementById("input").innerText;
+                }
+            }
+            else
+            {
+                document.getElementById("input").value=-document.getElementById("input").value;
+                document.getElementById("input").innerText=-document.getElementById("input").innerText;
+            }
         }
         function set_PhanTram()
         {
@@ -156,37 +170,41 @@
             }
             event.target.style.backgroundColor="white";
             event.target.style.color="rgb(224, 167, 61)";
-            if(Functions!="")
+            if(Functions!=="")
             {
-                Number2=document.getElementById("input").value;
-                if(Number2!=="")
+                if(Number2==="")
                 {
-                    if(Functions=="/")
+                    Number2=document.getElementById("input").value;
+                    if(Number2!=="")
                     {
-                        Number1=Number1/Number2;
-                        document.getElementById("input").value=Number1;
-                        document.getElementById("input").innerText=Number1;
+                        if(Functions=="/")
+                        {
+                            Number1=Number1/Number2;
+                            document.getElementById("input").value="";
+                            document.getElementById("input").innerText=Number1;
+                        }
+                        if(Functions=="-")
+                        {
+                            Number1=Number1-Number2;
+                            document.getElementById("input").value="";
+                            document.getElementById("input").innerText=Number1;
+                        }
+                        if(Functions=="+")
+                        {
+                            Number1=Number1+Number2;
+                            document.getElementById("input").value="";
+                            document.getElementById("input").innerText=Number1;
+                        }
+                        if(Functions=="x")
+                        {
+                            Number1=Number1*Number2;
+                            document.getElementById("input").value="";
+                            document.getElementById("input").innerText=Number1;
+                        }
+                        Funnctions=event.target.innerText;
+                        Number2="";
                     }
-                    if(Functions=="-")
-                    {
-                        Number1=Number1-Number2;
-                        document.getElementById("input").value=Number1;
-                        document.getElementById("input").innerText=Number1;
-                    }
-                    if(Functions=="+")
-                    {
-                        Number1=Number1+Number2;
-                        document.getElementById("input").value=Number1;
-                        document.getElementById("input").innerText=Number1;
-                    }
-                    if(Functions=="x")
-                    {
-                        Number1=Number1*Number2;
-                        document.getElementById("input").value=Number1;
-                        document.getElementById("input").innerText=Number1;
-                    }
-                    Funnctions=event.target.innerText;
-                }   
+                }
                 Functions=event.target.innerText;
                 inFunction="1";
             }
